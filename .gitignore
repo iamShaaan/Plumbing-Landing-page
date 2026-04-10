@@ -1,0 +1,8 @@
+# Environment and temp files
+.env
+.tmp/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
