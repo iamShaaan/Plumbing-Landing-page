@@ -60,13 +60,43 @@ if (contactForm) {
         btn.disabled = true;
         btn.innerText = 'Sending Request...';
         
-        // Simulating API call
-        setTimeout(() => {
-            alert('Your booking request has been sent! We will contact you shortly.');
-            contactForm.reset();
+        // Send data to n8n webhook
+        const formData = new FormData(contactForm);
+        const data = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            service: formData.get('service'),
+            message: formData.get('message'),
+            timestamp: new Date().toISOString(),
+            metadata: {
+                source: 'landing-page',
+                version: '1.0.0'
+            }
+        };
+
+        fetch('https://n8n.srv1454268.hstgr.cloud/webhook-test/d276f42d-b4df-4071-ada2-aecb65410ee7', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Your booking request has been sent! We will contact you shortly.');
+                contactForm.reset();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again or call us directly.');
+        })
+        .finally(() => {
             btn.disabled = false;
             btn.innerText = originalText;
-        }, 1500);
+        });
     });
 }
 

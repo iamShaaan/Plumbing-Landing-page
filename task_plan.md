@@ -1,24 +1,25 @@
-# Task Plan: GitHub Repository Deployment
+# Task Plan: Webhook Integration & Git Push
 
 ## Phase 1: B - Blueprint (Vision & Logic)
-- [ ] Answer Discovery Questions
-- [ ] Define Data Schema in `gemini.md` (Repo config)
-- [ ] Research GitHub repository creation and initialization
-- [ ] Approve Blueprint
+- [x] Identify booking form logic in `script.js`
+- [x] Confirm Discovery Questions
+- [x] Define Webhook Payload Schema in `gemini.md`
+- [x] Approve Blueprint for implementation
 
 ## Phase 2: L - Link (Connectivity)
-- [ ] Verify GitHub Authentication (`gh auth status` or MCP)
-- [ ] Handshake: Check if repo name is available
+- [x] Handshake: Test n8n webhook connectivity
+- [x] Verify Git status and remote connectivity
 
 ## Phase 3: A - Architect (The 3-Layer Build)
-- [ ] Layer 1: Create `architecture/github_deployment.md` SOP
-- [ ] Layer 2: Decision making for git commands
-- [ ] Layer 3: Execute `git init`, `git add`, `git commit`, `git remote add`, `git push`
+- [x] Layer 1: SOP for Webhook Integration (`architecture/webhook_integration.md`)
+- [x] Layer 2: Decision on fetch structure and error handling
+- [x] Layer 3: Update `script.js` with `fetch` call to n8n webhook
 
 ## Phase 4: S - Stylize (Refinement & UI)
-- [ ] Payload Refinement: Ensure `.gitignore` is present
-- [ ] UI/UX: Verify the repo appears correctly on GitHub
+- [x] UI Refinement: Update form button states
+- [x] Verify UI responsiveness during submission
 
 ## Phase 5: T - Trigger (Deployment)
-- [ ] Automation: Trigger the final push
-- [ ] Documentation: Update Maintenance Log in `gemini.md`
+- [x] Git: `git commit -am "chore: update booking webhook URL"`
+- [x] Git: `git push origin main`
+- [x] Documentation: Update Maintenance Log in `gemini.md`
